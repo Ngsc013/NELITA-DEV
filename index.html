@@ -269,21 +269,49 @@
             width: 300px;
             height: 300px;
             margin: 0 auto;
-            background: linear-gradient(135deg, var(--rosa-claro), var(--rosa-principal));
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--branco);
-            font-size: 100px;
             box-shadow: 0 10px 30px var(--sombra);
             position: relative;
             overflow: hidden;
             transition: transform 0.5s ease;
+            background-color: var(--rosa-pastel);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--branco);
         }
         
         .foto-perfil:hover {
             transform: scale(1.05);
+        }
+        
+        .foto-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--rosa-principal);
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .foto-placeholder i {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        
+        .foto-placeholder p {
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .foto-perfil img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
         }
         
         .sobre-texto {
@@ -655,6 +683,17 @@
             transform: translateY(0);
         }
         
+        /* Instruções para foto */
+        .instrucoes-foto {
+            background: var(--branco);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px var(--sombra);
+            font-size: 0.9rem;
+            border-left: 3px solid var(--rosa-claro);
+        }
+        
         /* Responsividade */
         @media (max-width: 992px) {
             .sobre-container {
@@ -687,6 +726,11 @@
             
             .portfolio-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .foto-perfil {
+                width: 250px;
+                height: 250px;
             }
         }
     </style>
@@ -726,7 +770,15 @@
             <div class="sobre-container">
                 <div class="sobre-img">
                     <div class="foto-perfil">
-                        <i class="fas fa-user"></i>
+                        <!-- ESPAÇO PARA COLOCAR FOTO -->
+                        <div class="foto-placeholder">
+                            <i class="fas fa-camera"></i>
+                            <p>Adicione sua foto aqui</p>
+                        </div>
+                        <img id="minha-foto" src="" alt="Foto da Nelita Conte">
+                    </div>
+                    <div class="instrucoes-foto">
+                        <p><strong>Para adicionar sua foto:</strong> Substitua o conteúdo dentro da div "foto-perfil" por uma tag img com src apontando para sua foto.</p>
                     </div>
                 </div>
                 <div class="sobre-texto">
@@ -780,7 +832,7 @@
                     </div>
                     <div class="projeto-conteudo">
                         <h3>Site Pessoal</h3>
-                        <p>Meu primeiro site desenvolvido com HTML, CSS e JavaScript.</p>
+                        <p>Desenvolvimento completo do meu site pessoal com design responsivo e moderno, utilizando HTML5, CSS3 e JavaScript.</p>
                     </div>
                     <div class="projeto-overlay">
                         <div class="projeto-links">
@@ -796,7 +848,7 @@
                     </div>
                     <div class="projeto-conteudo">
                         <h3>Identidade Visual</h3>
-                        <p>Criação de identidade visual para marca de cosméticos.</p>
+                        <p>Criação de identidade visual completa para marca de cosméticos naturais, incluindo logo, paleta de cores e aplicações.</p>
                     </div>
                     <div class="projeto-overlay">
                         <div class="projeto-links">
@@ -812,7 +864,7 @@
                     </div>
                     <div class="projeto-conteudo">
                         <h3>E-commerce</h3>
-                        <p>Desenvolvimento de loja virtual para boutique de roupas.</p>
+                        <p>Desenvolvimento de loja virtual responsiva para boutique de roupas, com integração de pagamento e carrinho de compras.</p>
                     </div>
                     <div class="projeto-overlay">
                         <div class="projeto-links">
@@ -828,7 +880,7 @@
                     </div>
                     <div class="projeto-conteudo">
                         <h3>App de Tarefas</h3>
-                        <p>Aplicativo mobile para organização de tarefas diárias.</p>
+                        <p>Aplicativo mobile para organização de tarefas diárias com sincronização em nuvem e lembretes personalizados.</p>
                     </div>
                     <div class="projeto-overlay">
                         <div class="projeto-links">
@@ -844,7 +896,7 @@
                     </div>
                     <div class="projeto-conteudo">
                         <h3>Blog de Viagens</h3>
-                        <p>Design e desenvolvimento de blog sobre experiências de viagem.</p>
+                        <p>Design e desenvolvimento de blog sobre experiências de viagem com layout inspirador e galeria de fotos interativa.</p>
                     </div>
                     <div class="projeto-overlay">
                         <div class="projeto-links">
@@ -860,7 +912,7 @@
                     </div>
                     <div class="projeto-conteudo">
                         <h3>Portfólio Fotográfico</h3>
-                        <p>Galeria online para fotógrafo profissional.</p>
+                        <p>Galeria online responsiva para fotógrafo profissional com sistema de categorias e visualização em tela cheia.</p>
                     </div>
                     <div class="projeto-overlay">
                         <div class="projeto-links">
@@ -882,22 +934,22 @@
                     <form id="formContato">
                         <div class="grupo-form">
                             <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" required>
+                            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
                         </div>
                         
                         <div class="grupo-form">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
                         </div>
                         
                         <div class="grupo-form">
                             <label for="assunto">Assunto</label>
-                            <input type="text" id="assunto" name="assunto" required>
+                            <input type="text" id="assunto" name="assunto" required placeholder="Assunto da mensagem">
                         </div>
                         
                         <div class="grupo-form">
                             <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                            <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Descreva seu projeto ou dúvida..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-enviar">Enviar Mensagem</button>
@@ -912,6 +964,7 @@
                         <div class="texto-contato">
                             <h3>E-mail</h3>
                             <p>nelita.conte@escola.pr.gov.br</p>
+                            <p>contato.nelita@gmail.com</p>
                         </div>
                     </div>
                     
@@ -921,7 +974,8 @@
                         </div>
                         <div class="texto-contato">
                             <h3>Telefone</h3>
-                            <p>(11) 99999-9999</p>
+                            <p>(41) 98765-4321</p>
+                            <p>(41) 3333-4444</p>
                         </div>
                     </div>
                     
@@ -1072,6 +1126,20 @@
         // Adicionar classe fade-in aos elementos que devem ser animados
         document.querySelectorAll('.projeto, .item-contato, .sobre-container > div').forEach(el => {
             el.classList.add('fade-in');
+        });
+        
+        // Função para carregar foto (exemplo)
+        function carregarFoto() {
+            // Substitua esta função para carregar a foto real
+            // Exemplo:
+            // document.getElementById('minha-foto').src = 'caminho/para/sua/foto.jpg';
+            // document.getElementById('minha-foto').style.display = 'block';
+            // document.querySelector('.foto-placeholder').style.display = 'none';
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarFoto();
         });
     </script>
 </body>
